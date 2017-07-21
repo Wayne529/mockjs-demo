@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>2017首届嬉习喜戏艺术节</title>
+	<meta name="keywords" content="嬉习喜戏，戏剧，舞蹈，默剧，喜剧，戏曲，吕丽萍，王珮瑜,订票,购票"/>
+	<meta name="description" content="2017嬉习喜戏艺术节，4大单元、9部剧目、15场演出，专注提供“有才、有料、有趣、有名”的国内外高品质好剧。全国票务服务热线：400-185-8666."/>
+
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/swiper-3.4.2.min.css">
+	<script src="js/mobile-util.js"></script>
+</head>
+<body>
+	<!-- 顶部banner -->
+	<div class="banner">
+		<img src="images/banner.jpg" alt="嬉习喜戏艺术节">
+	</div>
+	<!-- 顶部banner end -->
+
+	
+	<!-- 剧目详情介绍 -->
+	<div class="show-introduce">
+		<ul class="show-list">
+		
+		</ul>
+	</div>
+	<!-- 剧目详情介绍end -->
+	<div class="footer">
+		<a href="https://m.juooo.com/" class="more-show">点击查看更多演出</a>
+	</div>
+<iframe id="cciframe_65EDF50EA6C658299C33DC5901307461" src="https://p.bokecc.com/playhtml.bo?vid=65EDF50EA6C658299C33DC5901307461&siteid=FE3E44371586A764&autoStart=true&playerid=FA0F7C3FA4826788&playertype=1" frameborder="0" width="100%" height="100%"></iframe>
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<script src="js/mock.js"></script>
+	<script src="js/swiper-3.4.2.min.js"></script>
+	<!-- <script src="js/data.js"></script> -->
+
+
+	<script>
+//mock模拟数据
+var mockData = Mock.mock({
+	"showData|20":[
+		 {
+		 	"id|+1": 1,//递增的id
+		 	"url": "@url",//随机生成的url
+		 	"img": "@image('230x320', '#50B347', '#FFF', '@last')",//生成图片
+		 	"title": "@csentence(5,12)",//中文标题，若需英文，去掉前缀c
+		 	"summary": "@cparagraph",//中文段落，若需英文，去掉前缀c
+		 	"time" : "@datetime('yyyy.MM.dd HH:mm:ss')",//时间，可设置格式
+		 	"detail": "@cparagraph",
+		 	"photo|6-16":[
+		 		"images/photo/item5/photo01.jpg"
+		 	],//长度为6-16的数组
+		 	"price|10-500.2": 200,//小数点前数字范围在10-500之内，小数点后位数为2
+		 	"cost|10-800.1-2": 220,//小数点前数字范围在10-800之内，小数点后位数为1-2位
+		 	"regexp": /[a-z][A-Z][0-9]/,//正则表达式
+		 }
+	]
+})
+console.log(mockData);
+var showData = mockData.showData;
+
+
+
+	</script>
+	<script>
+		$(function(){
+			var fontSize = parseFloat(($('html').css('font-size').split('px'))[0]);//获取到html的字体大小
+			var betweenTic = fontSize*0.86;
+			var betweenImg = fontSize*0.42;
+
+
+			//拼接轮播剧照
+			function photoHtmlBg(photoArray){
+				var photoList = '';
+				for(var i=0;i<photoArray.length;i++){
+					photoList += '<div class="swiper-slide img-item" style="background-image:url(\''+ photoArray[i] +'\')">'+
+							     '</div>';
+				}
+				return photoList;
+			};
+
+
+			//拼接剧目详情
+			function showIntroduce(dataArray){
+				var showHtml = '';
+				for(var i=0;i<dataArray.length;i++){
+					showHtml += '<li class="show-item" data-url="'+ dataArray[i].url +'">'+
+									'<div class="show-detail">'+
+										'<div class="img-wrap">'+
+											'<img src="'+ dataArray[i].img +'" alt="">'+
+										'</div>'+
+										'<div class="show-content">'+
+											'<div class="content-top">'+
+												'<p class="title">'+ dataArray[i].title +'</p>'+
+												'<p class="summary">'+ dataArray[i].summary +'</p>'+						
+											'</div>'+
+											'<p class="time">'+dataArray[i].time +'</p>'+
+											'<p class="detail">'+ dataArray[i].detail +'</p>'+
+										'</div>'+
+									'</div>'+
+									'<div class="swiper-container img-swiper" id="'+ 'swiper' + i +'">'+
+									  '<div class="swiper-wrapper">'+ photoHtmlBg(dataArray[i].photo) +
+									  '</div>'+
+									'</div>'+
+								'</li>';
+				}
+				$('.show-list').html(showHtml);
+			};
+
+			showIntroduce(showData);
+
+			//遍历初始化swiper
+			function swiperInit(){
+				var swiperDom = $('.img-swiper');//获取图片的swiper
+				for(var i=0;i<swiperDom.length;i++){
+					var swiperId = '#swiper' + i;
+					var imgSwiper = new Swiper(swiperId, {
+						slidesPerView: 5,
+						spaceBetween : betweenImg,
+					});
+				}
+
+			};
+			swiperInit();
+
+
+			$('.show-item').on('click',function(){
+				var url = $(this).attr('data-url');
+				window.location.href = url;
+			})
+		})
+	</script>
+
+</body>
+</html>
