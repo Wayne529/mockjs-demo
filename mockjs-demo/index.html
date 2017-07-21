@@ -28,7 +28,6 @@
 	<div class="footer">
 		<a href="https://m.juooo.com/" class="more-show">点击查看更多演出</a>
 	</div>
-<iframe id="cciframe_65EDF50EA6C658299C33DC5901307461" src="https://p.bokecc.com/playhtml.bo?vid=65EDF50EA6C658299C33DC5901307461&siteid=FE3E44371586A764&autoStart=true&playerid=FA0F7C3FA4826788&playertype=1" frameborder="0" width="100%" height="100%"></iframe>
 	<script src="js/jquery-2.1.4.min.js"></script>
 	<script src="js/mock.js"></script>
 	<script src="js/swiper-3.4.2.min.js"></script>
@@ -36,28 +35,28 @@
 
 
 	<script>
-//mock模拟数据
-var mockData = Mock.mock({
-	"showData|20":[
-		 {
-		 	"id|+1": 1,//递增的id
-		 	"url": "@url",//随机生成的url
-		 	"img": "@image('230x320', '#50B347', '#FFF', '@last')",//生成图片
-		 	"title": "@csentence(5,12)",//中文标题，若需英文，去掉前缀c
-		 	"summary": "@cparagraph",//中文段落，若需英文，去掉前缀c
-		 	"time" : "@datetime('yyyy.MM.dd HH:mm:ss')",//时间，可设置格式
-		 	"detail": "@cparagraph",
-		 	"photo|6-16":[
-		 		"images/photo/item5/photo01.jpg"
-		 	],//长度为6-16的数组
-		 	"price|10-500.2": 200,//小数点前数字范围在10-500之内，小数点后位数为2
-		 	"cost|10-800.1-2": 220,//小数点前数字范围在10-800之内，小数点后位数为1-2位
-		 	"regexp": /[a-z][A-Z][0-9]/,//正则表达式
-		 }
-	]
-})
-console.log(mockData);
-var showData = mockData.showData;
+	//mock模拟数据
+	var mockData = Mock.mock({
+		"showData|20":[
+			 {
+			 	"id|+1": 1,//递增的id
+			 	"url": "@url",//随机生成的url
+			 	"img": "@image('230x320', '#50B347', '#FFF', '@last')",//生成图片
+			 	"title": "@csentence(5,12)",//中文标题，若需英文，去掉前缀c
+			 	"summary": "@cparagraph",//中文段落，若需英文，去掉前缀c
+			 	"time" : "@datetime('yyyy.MM.dd HH:mm:ss')",//时间，可设置格式
+			 	"detail": "@cparagraph",
+			 	"photo|6-16":[
+			 		"images/photo/item8/photo05.jpg"
+			 	],//长度为6-16的数组
+			 	"price|10-500.2": 200,//小数点前数字范围在10-500之内，小数点后位数为2
+			 	"cost|10-800.1-2": 220,//小数点前数字范围在10-800之内，小数点后位数为1-2位
+			 	"regexp": /[a-z][A-Z][0-9]/,//正则表达式
+			 }
+		]
+	})
+	console.log(mockData);
+	var showData = mockData.showData;
 
 
 
